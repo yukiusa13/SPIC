@@ -11,6 +11,7 @@ extern wchar_t* sprName[];
 void game_init()
 {
 	spr_load();
+	sprite_load(&obj, L"./Data/Images/bg.png");
 	bg_init();
     game_state = 0;
     game_timer = 0;

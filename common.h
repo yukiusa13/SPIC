@@ -9,7 +9,7 @@
 #define SCENE_GAME      (1)
 
 void spr_load();//画像読み込み関数
-
+static GameLib::Sprite *obj;
 //// スプライト用 ////
 enum 
 {

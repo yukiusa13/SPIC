@@ -22,6 +22,7 @@ void spr_load()
 void title_init()
 {
 	spr_load();
+	sprite_load(&obj, L"./Data/Images/bg.png");
     title_state = 0;
     title_timer = 0;
 }
@@ -59,8 +60,12 @@ void title_draw()
 	{
 	case 0:
 	case 1:
-		sprite_render(sprData[Bg],
+	/*	sprite_render(sprData[Bg],
 			0, 0,
+			1, 1,
+			0, 0,
+			SCREEN_WIDTH, SCREEN_HEIGHT);*/
+		sprite_render(obj, 0, 0,
 			1, 1,
 			0, 0,
 			SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -81,6 +86,7 @@ void title_end()
 	{
 		SAFE_DELETE(sprData[i]);
 	}
+	SAFE_DELETE(obj);
 }
 
 
