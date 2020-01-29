@@ -6,7 +6,6 @@ extern int game_timer;
 extern int game_state; 
 extern Sprite* sprData[Spr_Max];
 
-
 void bg_init()
 {
 
@@ -14,6 +13,7 @@ void bg_init()
 }
 void bg_updata()
 {
+
 
 }
 void bg_draw()

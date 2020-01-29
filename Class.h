@@ -1,5 +1,13 @@
 #pragma once
 
+struct Rect
+{
+	float top;
+	float under;
+	float left;
+	float right;
+};
+//OBJクラス
 class OBJ
 {
 private:
@@ -18,6 +26,7 @@ private:
 	bool timer_init(int STATE);
 public:
 	OBJ();
+	Rect rect;
 	void set_state(int STATE);
 	int get_state();
 	VECTOR2 pos;
@@ -69,12 +78,12 @@ public:
 		float rad = 0.0f,
 		float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
 };
-
+#define judge (0)
 static class JUDGE
 {
 public:
 
-#if(0)
+#if(judge)
 	//当たり判定代入用の変数
 	//矩形の当たり判定
 	//float px_a,float py_a ->当たり判定を行う2つのオブジェクトの1つ目の左上の座標(X,Y)
@@ -83,12 +92,15 @@ public:
 	//int sx_a,int sy_a ->当たり判定を行う2つのオブジェクトの2つ目の横と縦の長さ(X,Y)
 	bool rect(float px_a, float py_a, int sx_a, int sy_a,
 		float px_b, float py_b, int sx_b, int sy_b);
+	bool rect(Rect a, Rect b);
 #else
 	////矩形の当たり判定
-	//当たり判定を行う矩形の四点の座標(top,under,left,right)
+	//当たり判定を行う矩形の四点の座標(top,under,left,right)又はRECT構造体
 	//当たり判定を行う座標(x,y)又はVECTOR2(pos)
 	bool rect(float top, float under, float left, float right, float posx, float posy);
 	bool rect(float top, float under, float left, float right, VECTOR2 pos);
+	bool rect(Rect rect, VECTOR2 pos);
+	bool rect(Rect rect, float posx, float posy);
 #endif
 	//円の当たり判定
 	//float px_a,folat py_a->当たり判定を行う2つのオブジェクトの1つ目の中心座標(X,Y)又はVECTOR2(pos)
@@ -99,11 +111,12 @@ public:
 	bool circle(VECTOR2 posa, int r_a, VECTOR2 posb, int r_b);
 	bool circle(VECTOR2 posa, int r_a, float px_b, float py_b, int r_b);
 	bool circle(float px_a, float py_a, int r_a, VECTOR2 posb, int r_b);
+
 	//レーザーとの当たり判定
 	//int xory ->ｘ座標の判定かｙ座標の判定の設定　(0->x,1->y)
 	//float biginpos, float finfin ->判定の初め(bigin)と終わり(fin)の座標
 	//float judgepos, float laserwidth ->判定線(レーザーの中心線)と幅(判定線からレーザーの)
 	bool laser(int xory, float biginpos, float finpos,
-		float judgepos, float laserwidth,
-		VECTOR2 pos, float objwidth);
-};
+		        float judgepos, float laserwidth,
+		        VECTOR2 pos, float objwidth);
+}Judge;

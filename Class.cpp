@@ -166,7 +166,7 @@ void OBJ::motion(
 }
 
 //“–‚½‚è”»’èƒNƒ‰ƒX//
-#if(0)
+#if(judge)
 bool JUDGE::rect(float px_a, float py_a, int sx_a, int sy_a, float px_b, float py_b, int sx_b, int sy_b)
 {
 	bool jflg[2];
@@ -180,6 +180,16 @@ bool JUDGE::rect(float px_a, float py_a, int sx_a, int sy_a, float px_b, float p
 	else { jflg[1] = false; }
 	if (jflg[0] == true && jflg[1] == true) { return true; }
 	else { return false; }
+}
+
+bool JUDGE::rect(Rect a, Rect b)
+{
+	
+	if (a.right  <  b.left)   return false;
+	if (a.left   >  b.right)  return false;
+	if (a.under  <  b.top)    return false;
+	if (a.top    >  b.under)  return false;
+	return true;
 }
 
 #else 
@@ -198,6 +208,24 @@ bool JUDGE::rect(float top, float under, float left, float right, VECTOR2 pos)
 	if (under < pos.y)  return false;
 	if (left > pos.x)   return false;
 	if (right < pos.x)  return false;
+	return true;
+}
+
+bool JUDGE::rect(Rect rect, VECTOR2 pos)
+{
+	if (rect.top > pos.y)    return false;
+	if (rect.under < pos.y)  return false;
+	if (rect.left > pos.x)   return false;
+	if (rect.right < pos.x)  return false;
+	return true;
+}
+
+bool JUDGE::rect(Rect rect, float posx, float posy)
+{
+	if (rect.top > posy)	      return false;
+	if (rect.under < posy)  return false;
+	if (rect.left > posx)     return false;
+	if (rect.right < posx)    return false;
 	return true;
 }
 
