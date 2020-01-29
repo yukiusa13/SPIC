@@ -1,5 +1,5 @@
 #include "all.h"
-#define TEST (1)
+
 using namespace GameLib;
 using namespace input;
 extern int game_timer;
@@ -22,11 +22,7 @@ void bg_draw()
 	{
 	case 0:
 	case 1:
-		//sprite_render(sprData[Bg], 0, 0, 1, 1, 0, SCREEN_HEIGHT);
-		sprite_render(obj, 0, 0,
-			1, 1,
-			0, 0,
-			SCREEN_WIDTH, SCREEN_HEIGHT);
+		sprite_render(sprData[Bg], 0, 0, 1, 1, 0, SCREEN_HEIGHT);
 		break;
 	case 2:
 		
