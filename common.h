@@ -7,9 +7,7 @@
 #define SCREEN_HEIGHT   (1080)   // 画面の高さ
 #define SCENE_TITLE     (0)
 #define SCENE_GAME      (1)
-////左右/////
-#define LEFT  (-1)
-#define RIGHT (1)
+
 void spr_load();//画像読み込み関数
 
 //// スプライト用 ////
