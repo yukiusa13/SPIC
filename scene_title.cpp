@@ -41,6 +41,7 @@ void title_update()
             fadeOut=0.0f;
             title_state++;
         }
+		if (TRG(0)&PAD_TRG1)sound::play(0);
         break;
     case 2:
         fadeOut += 0.0167f;
