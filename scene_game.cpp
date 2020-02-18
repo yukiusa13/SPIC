@@ -12,13 +12,15 @@ void game_init()
 {
 	spr_load();
 	bg_init();
-    game_state = 0;
+	player_init();
+	game_state = 0;
     game_timer = 0;
 	fadeOut = 0;
 }
 void common()
 {
-	bg_updata();
+	bg_update();
+	player_update();
 }
 void game_update()
 {
@@ -56,6 +58,7 @@ void game_update()
 void game_draw()
 {
     bg_draw();
+	player_draw();
     ui_draw(game_state, game_score);
 	if (fadeOut > 0.0f)
 	{

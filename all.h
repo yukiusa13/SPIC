@@ -12,6 +12,7 @@
 #include "bg.h"
 #include "Class.h"
 #include "audio.h"
-
+#include "rad.h"
+#include "player.h"
 
 #endif // !INCLUDED_ALL
