@@ -14,11 +14,13 @@
 void spr_load();//画像読み込み関数
 
 //// スプライト用 ////
+////命名規則頭文字のみ大文字後は小文字////
 enum 
 {
 	Bg = 0,
 	Number,
 	Spr_Max
 };
+
 
 #endif// ! INCLUDED_COMMON

@@ -5,7 +5,7 @@ wchar_t* MusicName[] =
 {
 	L"./Data/Musics/bgm1.wav",
 };
-#define  Music_Max (1)
+
 void audio_init()
 {
 	for (int i = 0; i < Music_Max; i++)

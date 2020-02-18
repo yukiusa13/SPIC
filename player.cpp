@@ -2,7 +2,7 @@
 using namespace GameLib;
 using namespace input;
 OBJ player;
-extern float screen_pos;
+
 extern float world_pos;
 
 void player_init()

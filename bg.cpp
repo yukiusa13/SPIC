@@ -6,9 +6,9 @@ extern int game_timer;
 extern int game_state; 
 extern Sprite* sprData[Spr_Max];
 
-float screen_pos;
+OBJ bg[2];
 float world_pos;
-float speed;
+
 
 void scroll()
 {
