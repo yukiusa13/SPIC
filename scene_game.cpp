@@ -8,6 +8,7 @@ extern int nextScene;
 extern float fadeOut;
 extern Sprite* sprData[Spr_Max];
 extern wchar_t* sprName[];
+int play;
 void game_init()
 {
 	spr_load();
@@ -16,6 +17,7 @@ void game_init()
 	game_state = 0;
     game_timer = 0;
 	fadeOut = 0;
+	play = 0;
 }
 void common()
 {
@@ -32,12 +34,28 @@ void game_update()
          break;
      
      case 1:
-		 common();
-         if (TRG(0) & PAD_START)
-         {
-             fadeOut = 0.0f;
-             game_state++;
-         }
+		 switch (play)
+		 {
+		 case 0:
+			 if(TRG(0)&PAD_TRG2)
+			 {
+				 play = 1;
+			 }
+			 common();
+			 if (TRG(0) & PAD_START)
+			 {
+				 fadeOut = 0.0f;
+				 game_state++;
+			 }
+			 break;
+		 case 1:
+			 if (TRG(0)&PAD_TRG2)
+			 {
+				 play = 0;
+			 }
+			 break;
+		 }
+		 
     break;
      
      case 2:
@@ -59,6 +77,11 @@ void game_draw()
 {
     bg_draw();
 	player_draw();
+	if(play)
+	{
+		primitive::rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0,0,0,0,0.5); 
+		primitive::rect(1920 / 2, 1080 / 2, 500, 500, 250, 250);
+	}
     ui_draw(game_state, game_score);
 	if (fadeOut > 0.0f)
 	{

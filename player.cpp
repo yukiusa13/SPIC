@@ -10,17 +10,21 @@ void player_init()
 	player.pos={0,1080/2};
 	world_pos = -300;
 }
+VOLCANO volcano;
+
 
 void player_update()
 {
 	
-	if(STATE(0)&PAD_LEFT)
+	if (TRG(0)&PAD_TRG1&&volcano.get_state()>1) { volcano.init(player.pos.y,(player.pos.x-50)); }
+	volcano.update();
+	if(LEFT)
 	{
 	//	if(world_pos<0)world_pos += 5;
 		
 		player.pos.x -= 5;
 	}
-	if (STATE(0)&PAD_RIGHT)
+	if (RIGHT)
 	{
 		//if (world_pos > -scrollarea)world_pos -= 5;
 		player.pos.x += 5;
@@ -34,7 +38,9 @@ void player_update()
 
 void player_draw()
 {
+
 	debug::display();
+	volcano.draw();
 	primitive::rect(player.pos, { 100,100 }, { 50,50 });
 }
 	

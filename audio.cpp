@@ -10,7 +10,7 @@ void audio_init()
 {
 	for (int i = 0; i < Music_Max; i++)
 	{
-		music::load(i, MusicName[i], 0.3f);
+		music::load(i, MusicName[i], 1.0f);
     }
 	sound::load(L"./Data/Sounds/se.xwb");//SE
 }

@@ -78,6 +78,21 @@ public:
 		float rad = 0.0f,
 		float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
 };
+
+class VOLCANO :
+	public OBJ
+{
+private:
+	int timer;
+	float fin_pos;
+public:
+	VOLCANO() { pos.x = 1920; }
+	void init(float begin_posy,float fin_posx);
+	void update();
+	void draw();
+
+};
+
 #define judge (0)
 static class JUDGE
 {
