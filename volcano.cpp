@@ -27,5 +27,5 @@ void VOLCANO::update()
 
 void VOLCANO::draw()
 {
-	primitive::rect(pos.x, pos.y, 1920, 500, 0, 250, 0, 1, 0, 0, 0.6);
+	primitive::rect(pos.x, pos.y, 1920, 300, 0, 150, 0, 1, 0, 0, 0.6);
 }
