@@ -33,7 +33,8 @@ void bg_draw()
 	{
 	case 0:
 	case 1:
-		sprite_render(sprData[Bg], 0, 0, 1, 1, 0, SCREEN_HEIGHT);
+		sprite_render(sprData[Bg], world_pos, 0, 1, 1, 0, SCREEN_HEIGHT*2,3840,1080);
+		sprite_render(sprData[Bg], world_pos+3840, 0, 1, 1, 0, SCREEN_HEIGHT * 2, 3840, 1080);
 		break;
 	case 2:
 		
