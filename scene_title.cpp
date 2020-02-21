@@ -32,11 +32,14 @@ enum
 namespace stage
 {
 	const int max = 3;
+	int state;
 	int num[3];
 	float scl;
 	float pos[3];
+	int vect;
 	void set();
-	void choice();
+	void init(int next);
+	void update(int next);
 }
 void stage::set()
 {
@@ -45,9 +48,28 @@ void stage::set()
 	num[2] = num[2] + 1;
 	if (num[2] >= max)num[2] = 0;
 }
-void stage::choice()
+void stage::init(int next)
 {
-	
+	if (next > num[1])vect = 1;
+	else vect = -1;
+}
+void stage::update(int next)
+{
+	switch (state)
+	{
+	case 1:
+		init(next);
+		break;
+	case 2:
+		break;
+	case 3:
+		for (int i = 0; i < 3; i++)
+		{
+			pos[i] += (vect * 10);
+		}
+		if (pos[1]);
+		break;
+	}
 }
 void title_init()
 {
