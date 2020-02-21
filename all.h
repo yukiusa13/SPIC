@@ -1,6 +1,6 @@
 #ifndef INCLUDED_ALL
 #define INCLUDED_ALL
-
+#define		_CRT_SECURE_NO_WARNINGS
 #include "./GameLib/game_lib.h"
 #include "./GameLib/template.h"
 #include "./GameLib/input_manager.h"
@@ -14,5 +14,7 @@
 #include "audio.h"
 #include "rad.h"
 #include "player.h"
+#include "enemy.h"
+
 
 #endif // !INCLUDED_ALL

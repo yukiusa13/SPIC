@@ -39,6 +39,11 @@ namespace GameLib
         const int PAD_R2 = (1 << 13);
         const int PAD_L3 = (1 << 14);
         const int PAD_R3 = (1 << 15);
+        const int PAD_W = (1 << 16);
+        const int PAD_S = (1 << 17);
+        const int PAD_A = (1 << 18);
+        const int PAD_D = (1 << 19);
+
 
         // パッドの最大数
         const int	GAMEPAD_NUM = 4;
@@ -86,8 +91,8 @@ namespace GameLib
         float       leftX, leftY;       // 左スティック
         float       rightX, rightY;     // 右スティック
         float       left, right;        // 左右トリガー
-        PadAssign*  keyAssign;          // キーボード割り当てデータ
-        PadAssign*  joyAssign;          // ジョイスティック割り当てデータ
+        PadAssign* keyAssign;          // キーボード割り当てデータ
+        PadAssign* joyAssign;          // ジョイスティック割り当てデータ
     };
 
     //==============================================================================
@@ -98,8 +103,8 @@ namespace GameLib
     class InputManager : public Singleton<InputManager>
     {
     private:
-        DirectX::Keyboard*  keyboard;   // https://github.com/Microsoft/DirectXTK/wiki/Keyboard
-        DirectX::GamePad*   gamePad;    // https://github.com/Microsoft/DirectXTK/wiki/GamePad
+        DirectX::Keyboard* keyboard;   // https://github.com/Microsoft/DirectXTK/wiki/Keyboard
+        DirectX::GamePad* gamePad;    // https://github.com/Microsoft/DirectXTK/wiki/GamePad
 
         PadState     pad[input::GAMEPAD_NUM];	    // ゲームパッド
         POINT        mousePos;			            // マウス座標

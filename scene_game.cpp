@@ -14,6 +14,8 @@ void game_init()
 	spr_load();
 	bg_init();
 	player_init();
+    enemy_init();
+
 	game_state = 0;
     game_timer = 0;
 	fadeOut = 0;
@@ -23,6 +25,8 @@ void common()
 {
 	bg_update();
 	player_update();
+    enemy_update();
+
 }
 void game_update()
 {
@@ -37,19 +41,19 @@ void game_update()
 		 switch (play)
 		 {
 		 case 0:
-			 if(TRG(0)&PAD_TRG2)
+			 if(TRG(0)&PAD_START)
 			 {
 				 play = 1;
 			 }
 			 common();
-			 if (TRG(0) & PAD_START)
+			/* if (TRG(0) & PAD_START)
 			 {
 				 fadeOut = 0.0f;
 				 game_state++;
-			 }
+			 }*/
 			 break;
 		 case 1:
-			 if (TRG(0)&PAD_TRG2)
+			 if (TRG(0)&PAD_START)
 			 {
 				 play = 0;
 			 }
@@ -77,6 +81,8 @@ void game_draw()
 {
     bg_draw();
 	player_draw();
+    enemy_draw();
+
 	if(play)
 	{
 		primitive::rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0,0,0,0,0.5); 

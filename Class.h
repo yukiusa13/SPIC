@@ -30,6 +30,7 @@ public:
 	void set_state(int STATE);
 	int get_state();
 	VECTOR2 pos;
+	VECTOR2 speed;
 	bool exist;
     //画像データ
     //切り替え時間(フレーム単位)
@@ -86,8 +87,8 @@ private:
 	int timer;
 	float fin_pos;
 public:
-	VOLCANO() { pos.x = 1920; }
-	void init(float begin_posy,float fin_posx);
+	VOLCANO() { pos.x = 1920; speed.x = 10; }
+	void init(float begin_posy,float fin_posx,float speed);
 	void update();
 	void draw();
 

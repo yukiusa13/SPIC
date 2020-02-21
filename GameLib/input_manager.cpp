@@ -27,10 +27,10 @@ namespace GameLib
         { PAD_LEFT     , Keyboard::Left },          // VK_LEFT
         { PAD_RIGHT    , Keyboard::Right },         // VK_RIGHT
 
-        //{ PAD_UP       , Keyboard::W },           // 'W'
-        //{ PAD_DOWN     , Keyboard::S },           // 'S'
-        //{ PAD_LEFT     , Keyboard::A },           // 'A'
-        //{ PAD_RIGHT    , Keyboard::D },           // 'D'
+        { PAD_W       , Keyboard::W },           // 'W'
+        { PAD_S       , Keyboard::S },           // 'S'
+        { PAD_A       , Keyboard::A },           // 'A'
+        { PAD_D       , Keyboard::D },           // 'D'
 
         //{ PAD_TRG3     , Keyboard::Space },       // VK_SPACE
 
@@ -95,7 +95,7 @@ namespace GameLib
     //--------------------------------
     //  キー割り当ての設定
     //--------------------------------
-    void InputManager::setKeyAssign(int no, PadAssign *data)
+    void InputManager::setKeyAssign(int no, PadAssign* data)
     {
         pad[no].keyAssign = data;
     }
@@ -103,7 +103,7 @@ namespace GameLib
     //--------------------------------
     //  ジョイスティック割り当ての設定
     //--------------------------------
-    void InputManager::setJoyAssign(int no, PadAssign *data)
+    void InputManager::setJoyAssign(int no, PadAssign* data)
     {
         pad[no].joyAssign = data;
     }
@@ -164,7 +164,7 @@ namespace GameLib
             p->state = 0;
 
             // キーボード・マウス
-            PadAssign *assign = p->keyAssign;
+            PadAssign* assign = p->keyAssign;
             if (assign)
             {
                 while (assign->bit)
@@ -193,12 +193,12 @@ namespace GameLib
                     struct hoge_t { bool b[10]; } hoge;
                     if (assign->code >= GamePad::A)
                     {	// buttons
-                        hoge = *(hoge_t*)&gpad[i].buttons;
+                        hoge = *(hoge_t*)& gpad[i].buttons;
                         if (hoge.b[assign->code - GamePad::A]) p->state |= assign->bit;
                     }
                     else
                     {	// dpad
-                        hoge = *(hoge_t*)&gpad[i].dpad;
+                        hoge = *(hoge_t*)& gpad[i].dpad;
                         if (hoge.b[assign->code]) p->state |= assign->bit;
                     }
 
