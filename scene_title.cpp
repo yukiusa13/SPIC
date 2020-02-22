@@ -38,6 +38,7 @@ namespace stage
 	float pos[5];
 	int vect;
 	int next;
+	int timer;
 	void set();
 	void init();
 	void reset();
@@ -58,7 +59,7 @@ void stage::set()
 }
 void stage::init()
 {
-	if (next > 1)vect = -1;
+	if (next > 2)vect = -1;
 	else vect = 1;
 }
 void stage::reset()
@@ -69,26 +70,29 @@ void stage::reset()
 	pos[1] = 1220;
 	pos[0] = 1220+640;
 }
+int count;
 void stage::update()
 {
 	switch (state)
 	{
 	case 1:
+		count++;
 		init();
 		state++;
 		break;
 	case 2:
-		pos[0] -= 80;
-		pos[1] -= 40;
-		pos[3] += 40;
-		pos[4] += 80;
-		
 		if (scl <= 0.5)
 		{
 			state++;
 		}
 		else
+		{
 		scl -= 0.05;
+		pos[0] -= 80;
+		pos[1] -= 40;
+		pos[3] += 40;
+		pos[4] += 80;
+		}
 		break;
 	case 3:
 		for (int i = 0; i < 5; i++)
@@ -100,24 +104,35 @@ void stage::update()
 		    num[2] = num[next];
 			set();
 			reset();
-			//if (LEFT) { stage::next = 1; stage::state = 1; }
-			//if (RIGHT){ stage::next = 3; stage::state = 1; }
+			timer = 0;
 		    state++;
 		}
 		break;
-	case 4:
-		pos[0] += 80;
-		pos[1] += 40;
-		pos[3] -= 40;
-		pos[4] -= 80;
+	case 4: 
+		if(STATE(0))
+		{
+			if (LEFT) { stage::next = 1; stage::state = 1; }
+		    if (RIGHT){ stage::next = 3; stage::state = 1; }
+		}
+		else if(timer>30)
+		state++;
+		timer++;
+		break;
+	case 5:
 		if (scl >= 1)
 		{
 			state++;
 		}
 		else
+		{
 		scl += 0.05;
+		pos[0] += 80;
+		pos[1] += 40;
+		pos[3] -= 40;
+		pos[4] -= 80;
+		}
 		break;
-	case 5:
+	case 6:
 		state = 0;
 		break;
 	}
@@ -208,6 +223,8 @@ void title_draw()
 	debug::setString("num[2]:%d", stage::num[2]);
 	debug::setString("num[3]:%d", stage::num[3]);
 	debug::setString("num[4]:%d", stage::num[4]);
+	debug::setString("vect:%d", stage::vect);
+	debug::setString("count:%d", count);
 	debug::display();
 }
 
