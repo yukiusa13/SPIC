@@ -53,13 +53,13 @@ void Pjump::update()
 		break;
 	case 2:
 		Pjump::speed -= 0.5;
-		player.pos.x -= Pjump::speed;
 		if (Pjump::speed <= 0)Pjump::state = 3;
+		player.pos.x -= Pjump::speed;
 		break;
 	case 3:
 		Pjump::speed -= 0.5;
-		player.pos.x -= Pjump::speed;
 		if (player.pos.x>=Pjump::pos)Pjump::state = 0;
+		player.pos.x -= Pjump::speed;
 		break;
 	}
 
