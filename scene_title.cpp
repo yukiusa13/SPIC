@@ -45,6 +45,10 @@ namespace stage
 	void update();
 	void draw();
 }
+int stagesetter()
+{
+	return stage::num[2];
+}
 void stage::set()
 {
 	num[1] = num[2] - 1;
@@ -70,13 +74,12 @@ void stage::reset()
 	pos[1] = 1220;
 	pos[0] = 1220+640;
 }
-int count;
+
 void stage::update()
 {
 	switch (state)
 	{
 	case 1:
-		count++;
 		init();
 		state++;
 		break;
@@ -109,12 +112,16 @@ void stage::update()
 		}
 		break;
 	case 4: 
-		if(STATE(0))
+		if (TRG(0)&PAD_SELECT)
+		{
+			state++;
+		}
+		if(LEFT||RIGHT)
 		{
 			if (LEFT) { stage::next = 1; stage::state = 1; }
 		    if (RIGHT){ stage::next = 3; stage::state = 1; }
 		}
-		else if(timer>30)
+		else if(timer>60)
 		state++;
 		timer++;
 		break;
@@ -170,7 +177,7 @@ void title_update()
         title_state++;
         break;
     case 1:
-        if (TRG(0) & PAD_START)
+        if (TRG(0) & PAD_START&&stage::state==0)
         {
             fadeOut=0.0f;
             title_state++;
@@ -224,7 +231,6 @@ void title_draw()
 	debug::setString("num[3]:%d", stage::num[3]);
 	debug::setString("num[4]:%d", stage::num[4]);
 	debug::setString("vect:%d", stage::vect);
-	debug::setString("count:%d", count);
 	debug::display();
 }
 

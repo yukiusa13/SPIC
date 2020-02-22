@@ -70,7 +70,7 @@ void player_update()
 {				
 	Pjump::isflg[0] = false;
 	Pjump::isflg[1] = false;
-	if (Pjump::state == 0) { player.pos.x += 5; }
+	if (Pjump::state == 0) { player.pos.x += 12; }
 	for (int y = 0; y < MAP_Y; y++)
 	{
 		for (int x = 0; x < MAP_X; x++)
@@ -141,8 +141,8 @@ void player_update()
 	if (Pjump::state == 0 &&JUMP&&Pjump::get_flg()) { Pjump::state = 1; }
 	Pjump::update();
 #endif
-	if (player.pos.x < 50) { player.pos.x = 50; }
-	if (player.pos.x > 1820) { player.pos.x = 1820; }
+	if (player.pos.x < 50) { Pjump::speed = 0; player.pos.x = 50; }
+	if (player.pos.x > 1870) { player.pos.x = 1870; }
 	if (player.pos.y < 50) { player.pos.y = 50; }
 	if (player.pos.y > 1030) { player.pos.y = 1030; }
 #if(0)

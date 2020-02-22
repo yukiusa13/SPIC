@@ -46,11 +46,6 @@ void game_update()
 				 play = 1;
 			 }
 			 common();
-			/* if (TRG(0) & PAD_START)
-			 {
-				 fadeOut = 0.0f;
-				 game_state++;
-			 }*/
 			 break;
 		 case 1:
 			 if (TRG(0)&PAD_START)
