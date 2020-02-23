@@ -38,21 +38,7 @@ void VOLCANO::draw()
 {
 	primitive::rect(pos.x, pos.y, 1920, 300, 0, 150, 0, 1, 0, 0, 0.6);
 }
-void volcano_init()
-{
-	volcano.init();
-	obsidian.init();
-}
-void volcano_update()
-{
-	if (TRG(0)&PAD_TRG3&&volcano.get_state()==0) { volcano.set(player.pos.y, (player.pos.x - 50), 10); }
-	volcano.update();
-	obsidian.update();
-}
-void volcano_draw()
-{
- volcano.draw();
-}
+
 
 ////OBSIDIAN class////
 void OBSIDIAN::set(VECTOR2 pos)
@@ -71,7 +57,8 @@ void OBSIDIAN::update()
 		exist = false;
 		break;
 	case 1:
-		size += 10;
+		if(size<1920)
+		    size += 10;
 		if (pos.x > 1920)
 			set_state(0);
 		break;
@@ -81,5 +68,22 @@ void OBSIDIAN::update()
 void OBSIDIAN::draw()
 {
 	if(exist)
-	primitive::rect(pos.x, pos.y, size, 300, 0, 150, 0, 0, 0, 1, 0.6);
+	primitive::rect(pos.x, pos.y, size, 300, 0, 150, 0, 0, 0, 1, 1);
+}
+void volcano_init()
+{
+	volcano.init();
+	obsidian.init();
+}
+void volcano_update()
+{
+	if (TRG(0)&PAD_TRG3&&volcano.get_state()==0) { volcano.set(player.pos.y, (player.pos.x - 50), 10); }
+	if (TRG(0)&PAD_TRG3&&obsidian.get_state() == 0) { obsidian.set(player.pos); }
+	volcano.update();
+	obsidian.update();
+}
+void volcano_draw()
+{
+ volcano.draw();
+ obsidian.draw();
 }
