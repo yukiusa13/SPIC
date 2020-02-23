@@ -87,11 +87,23 @@ private:
 	int timer;
 	float fin_pos;
 public:
-	VOLCANO() { pos.x = 1920; speed.x = 10; }
-	void init(float begin_posy,float fin_posx,float speed);
+	VOLCANO() { speed.x = 10; }
+	void init() { set_state(0); }
+	void set(float begin_posy,float fin_posx,float speed);
 	void update();
 	void draw();
 
+};
+class OBSIDIAN :public OBJ
+{
+private:
+	float size;
+public:
+	OBSIDIAN() { speed.x = 10; }
+	void init(){ set_state(0); }
+	void set(VECTOR2 pos);
+	void update();
+	void draw();
 };
 
 #define judge (0)

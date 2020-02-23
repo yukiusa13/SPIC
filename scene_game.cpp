@@ -15,7 +15,7 @@ void game_init()
 	bg_init();
 	player_init();
     enemy_init();
-
+	volcano_init();
 	game_state = 0;
     game_timer = 0;
 	fadeOut = 0;
@@ -52,6 +52,10 @@ void game_update()
 			 if (TRG(0)&PAD_START)
 			 {
 				 play = 0;
+			 }
+			 if (TRG(0)&PAD_L1)
+			 {
+				 game_init();
 			 }
 			 break;
 		 }
