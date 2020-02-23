@@ -6,6 +6,8 @@
 #define area_left  (300)
 #define area_right (1620)
 #define scrollarea (3500)
+#define MAP_Y (17)
+#define MAP_X (30)
 void scroll();
 void bg_init();
 void bg_update();

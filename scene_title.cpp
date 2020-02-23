@@ -11,6 +11,10 @@ wchar_t* sprName[] =
 {
 	L"./Data/Images/bg.png",
 	L"./Data/Images/number.png",
+	L"./Data/Images/mapchip.png",
+    L"./Data/Images/enemy.png",
+	L"./Data/Images/stage.png",
+
 };
 void spr_load()
 {
@@ -19,11 +23,39 @@ void spr_load()
 		sprite_load(&sprData[i], sprName[i]);
 	}
 }
+enum 
+{
+	stage1=0,
+	stage2,
+	stage3,
+};
+namespace stage
+{
+	const int max = 3;
+	int num[3];
+	float scl;
+	float pos[3];
+	void set();
+	void choice();
+}
+void stage::set()
+{
+	num[0] = num[1] - 1;
+	if (num[0] < 0)num[0] = max - 1;
+	num[2] = num[2] + 1;
+	if (num[2] >= max)num[2] = 0;
+}
+void stage::choice()
+{
+	
+}
 void title_init()
 {
 	spr_load();
+	stage::num[1] = stage1;
     title_state = 0;
     title_timer = 0;
+
 }
 
 void title_update()

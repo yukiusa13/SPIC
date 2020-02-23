@@ -1,8 +1,9 @@
 #include "all.h"
 using namespace GameLib;
-void VOLCANO::init(float begin_posy, float fin_posx)
+void VOLCANO::init(float begin_posy, float fin_posx,float speed)
 {
 	set_state(0);
+	this->speed.x = speed;
 	pos = {1920,begin_posy};
 	fin_pos = fin_posx;
 	timer = 20;
@@ -14,12 +15,12 @@ void VOLCANO::update()
 	switch (get_state())
 	{
 	case 0:
-		if (fin_pos <= pos.x) { pos.x -= 10; }
+		if (fin_pos <= pos.x) { pos.x -= speed.x; }
 		else { timer--; }
 		if (timer <= 0) { set_state(next); }
 		break;
 	case 1:
-		if (pos.x < 2000) { pos.x += 10; }
+		if (pos.x < 2000) { pos.x += speed.x; }
 		else { set_state(next); }
 		break;
 	}
