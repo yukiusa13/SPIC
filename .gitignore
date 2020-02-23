@@ -263,3 +263,14 @@ Data/Sounds/Win/Win/SE.xgs
 Data/Sounds/se.xwb
 Data/Sounds/Win/SE.xap
 Data/Sounds/Win/Wave Bank.xwb
+Data/Map/first.tmx
+Data/Map/first.csv
+Data/Images/stage.png
+Data/Images/pose.png
+Data/Images/enemy.png
+Data/Images/bg.png
+Data/Map/first.txt
+Data/Images/mapchip.png
+gp1.vcxproj
+gp1.vcxproj.filters
+GameLib/input_manager.cpp
