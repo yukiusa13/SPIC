@@ -26,6 +26,7 @@ void common()
 	bg_update();
 	player_update();
     enemy_update();
+	volcano_update();
 
 }
 void game_update()
@@ -77,7 +78,7 @@ void game_draw()
     bg_draw();
 	player_draw();
     enemy_draw();
-
+	volcano_draw();
 	if(play)
 	{
 		primitive::rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0,0,0,0,0.5); 

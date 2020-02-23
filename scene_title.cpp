@@ -164,7 +164,6 @@ void title_init()
 	stage::pos[4] = -1620;
     title_state = 0;
     title_timer = 0;
-
 }
 
 void title_update()
@@ -221,6 +220,7 @@ void title_draw()
 		}
 		break;
 	}
+#if(Debug)
 	for (int i = 0; i < 5; i++)
 	{
 		debug::setString("pos[%d]:%f", i, stage::pos[i]);
@@ -232,6 +232,7 @@ void title_draw()
 	debug::setString("num[4]:%d", stage::num[4]);
 	debug::setString("vect:%d", stage::vect);
 	debug::display();
+#endif
 }
 
 void title_end()
