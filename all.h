@@ -16,6 +16,9 @@
 #include "player.h"
 #include "enemy.h"
 #include "volcano.h"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9400ed73e16186517dd54d14cc02bab00701e77c
 
 #endif // !INCLUDED_ALL
