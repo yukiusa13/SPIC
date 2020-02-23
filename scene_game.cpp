@@ -15,7 +15,11 @@ void game_init()
 	bg_init();
 	player_init();
     enemy_init();
+<<<<<<< HEAD
 
+=======
+	volcano_init();
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 	game_state = 0;
     game_timer = 0;
 	fadeOut = 0;
@@ -26,6 +30,10 @@ void common()
 	bg_update();
 	player_update();
     enemy_update();
+<<<<<<< HEAD
+=======
+	volcano_update();
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 
 }
 void game_update()
@@ -46,16 +54,23 @@ void game_update()
 				 play = 1;
 			 }
 			 common();
+<<<<<<< HEAD
 			/* if (TRG(0) & PAD_START)
 			 {
 				 fadeOut = 0.0f;
 				 game_state++;
 			 }*/
+=======
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 			 break;
 		 case 1:
 			 if (TRG(0)&PAD_START)
 			 {
 				 play = 0;
+			 }
+			 if (TRG(0)&PAD_L1)
+			 {
+				 game_init();
 			 }
 			 break;
 		 }
@@ -82,7 +97,11 @@ void game_draw()
     bg_draw();
 	player_draw();
     enemy_draw();
+<<<<<<< HEAD
 
+=======
+	volcano_draw();
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 	if(play)
 	{
 		primitive::rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, 0,0,0,0,0.5); 

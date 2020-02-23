@@ -8,7 +8,10 @@ extern Sprite* sprData[Spr_Max];
 
 OBJ bg[2];
 float world_pos;
+<<<<<<< HEAD
 
+=======
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 int map[MAP_Y][MAP_X];
 void scroll()
 {
@@ -40,7 +43,11 @@ void load_mapdata(int num)
 
 void bg_init()
 {
+<<<<<<< HEAD
 	load_mapdata(0);
+=======
+	load_mapdata(stagesetter());
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 
 }
 

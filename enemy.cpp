@@ -2,17 +2,28 @@
 using namespace GameLib;
 using namespace input;
 extern Sprite* sprData[Spr_Max];
+<<<<<<< HEAD
 ENEMY enemy;
 extern OBJ player;
 extern int map[MAP_Y][MAP_X];
 namespace Ejump
 {
     bool isflg[2];
+=======
+OBJ enemy;
+extern OBJ player;
+
+namespace Ejump
+{
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
     int state;
     float pos;
     float speed;
     void init(float pos);
+<<<<<<< HEAD
     bool get_flg();
+=======
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
     void update();
 }
 
@@ -30,11 +41,14 @@ void Ejump::init(float pos)
     Ejump::pos = pos;
     Ejump::speed = 10;
 }
+<<<<<<< HEAD
 bool Ejump::get_flg()
 {
     if (isflg[0] || isflg[1]) { return true; }
     return false;
 }
+=======
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 void Ejump::update()
 {
     switch (Ejump::state)
@@ -55,6 +69,7 @@ void Ejump::update()
     }
 
 }
+<<<<<<< HEAD
 void ENEMY::init()
 {
     enemy.pos = { 500,540 / 2 };
@@ -112,6 +127,16 @@ void ENEMY::update()
         }
     }
 #endif
+=======
+
+void enemy_init()
+{
+    enemy.pos = { 500,540 / 2 };
+}
+
+void enemy_update()
+{
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
     switch (enemy.get_state())
     {
     case eWait:
@@ -128,7 +153,11 @@ void ENEMY::update()
 
     //ë´èÍÇ™Ç†ÇÈÇ∆Ç±ÇÎÇæÇØÇ≈ç∂âEÇ…ìÆÇ≠èÍçá
 
+<<<<<<< HEAD
     if (Ejump::state == 0  && Ejump::get_flg()) { Ejump::state = 1; }
+=======
+    if (Ejump::state == 0) { Ejump::state = 1; }
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
     Ejump::update();
 
     if (enemy.pos.x < 50) { enemy.pos.x = 50; }
@@ -136,9 +165,14 @@ void ENEMY::update()
     if (enemy.pos.y < 50) { enemy.pos.y = 50; }
     if (enemy.pos.y > 1030) { enemy.pos.y = 1030; }
 }
+<<<<<<< HEAD
     
 
 void ENEMY::draw()
+=======
+
+void enemy_draw()
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 {
     switch (enemy.get_state())
     {
@@ -149,6 +183,7 @@ void ENEMY::draw()
     case eJump:
         break;
     }
+<<<<<<< HEAD
     sprite_render(sprData[Enemy], enemy.pos.x, enemy.pos.y, 1, 1, 0, 0, 64, 64,32,32);
 }
 
@@ -164,4 +199,7 @@ void enemy_update()
 void enemy_draw()
 {
     enemy.draw();
+=======
+    sprite_render(sprData[Enemy], enemy.pos.x, enemy.pos.y, 1, 1, 0, 0, 64, 64);
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 }

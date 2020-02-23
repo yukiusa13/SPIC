@@ -2,7 +2,7 @@
 using namespace GameLib;
 using namespace input;
 OBJ player;
-VOLCANO volcano;
+
 
 extern float world_pos;
 
@@ -30,7 +30,11 @@ void player_init()
 	player.pos={1920/2,1080/2};
 	world_pos = -300;
 	Pjump::state = 0;
+<<<<<<< HEAD
 	isvolcano_speed = 10;
+=======
+	
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 }
 
 void Pjump::init(float pos)
@@ -53,13 +57,13 @@ void Pjump::update()
 		break;
 	case 2:
 		Pjump::speed -= 0.5;
-		player.pos.x -= Pjump::speed;
 		if (Pjump::speed <= 0)Pjump::state = 3;
+		player.pos.x -= Pjump::speed;
 		break;
 	case 3:
 		Pjump::speed -= 0.5;
-		player.pos.x -= Pjump::speed;
 		if (player.pos.x>=Pjump::pos)Pjump::state = 0;
+		player.pos.x -= Pjump::speed;
 		break;
 	}
 
@@ -70,7 +74,11 @@ void player_update()
 {				
 	Pjump::isflg[0] = false;
 	Pjump::isflg[1] = false;
+<<<<<<< HEAD
 	if (Pjump::state == 0) { player.pos.x += 5; }
+=======
+	if (Pjump::state == 0) { player.pos.x += 12; }
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 	for (int y = 0; y < MAP_Y; y++)
 	{
 		for (int x = 0; x < MAP_X; x++)
@@ -121,7 +129,7 @@ void player_update()
 	case Jump:
 		break;
 	}
-	volcano.update();
+	
 	if(LEFT)
 	{
 	//	if(world_pos<0)world_pos += 5;
@@ -134,15 +142,20 @@ void player_update()
 		player.pos.y -= 5;
 	}
 #if (Debug)
+<<<<<<< HEAD
 	if (STATE(0)&PAD_R1) { isvolcano_speed += 1; }
 	if (TRG(0)&PAD_TRG3&&volcano.get_state()>1) { volcano.init(player.pos.y,(player.pos.x-50),isvolcano_speed); }
+=======
+
+	
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 	//if (UP) { player.pos.x -= 5; }
 	//if (DOWN) { player.pos.x += 5; }
 	if (Pjump::state == 0 &&JUMP&&Pjump::get_flg()) { Pjump::state = 1; }
 	Pjump::update();
 #endif
-	if (player.pos.x < 50) { player.pos.x = 50; }
-	if (player.pos.x > 1820) { player.pos.x = 1820; }
+	if (player.pos.x < 50) { Pjump::speed = 0; player.pos.x = 50; }
+	if (player.pos.x > 1870) { player.pos.x = 1870; }
 	if (player.pos.y < 50) { player.pos.y = 50; }
 	if (player.pos.y > 1030) { player.pos.y = 1030; }
 #if(0)
@@ -166,7 +179,7 @@ void player_draw()
 		break;
 	}
 	//debug::display();
-	volcano.draw();
+	
 	primitive::rect(player.pos, { 100,100 }, { 50,50 });
 }
 	

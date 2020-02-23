@@ -179,5 +179,11 @@
     <ClInclude Include="enemy.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="volcano.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
   </ItemGroup>
 </Project>

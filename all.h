@@ -15,6 +15,14 @@
 #include "rad.h"
 #include "player.h"
 #include "enemy.h"
+<<<<<<< HEAD
 
+=======
+#include "volcano.h"
+<<<<<<< HEAD
+
+=======
+>>>>>>> 9400ed73e16186517dd54d14cc02bab00701e77c
+>>>>>>> b67f318d7eaccf63255085195747a7064621b348
 
 #endif // !INCLUDED_ALL
