@@ -59,7 +59,7 @@ void OBSIDIAN::set(VECTOR2 pos)
 {
 	set_state(1);
 	this->pos = pos;
-
+	exist = true;
 }
 
 void OBSIDIAN::update()
