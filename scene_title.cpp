@@ -38,11 +38,16 @@ namespace stage
 	float pos[5];
 	int vect;
 	int next;
+	int timer;
 	void set();
 	void init();
 	void reset();
 	void update();
 	void draw();
+}
+int stagesetter()
+{
+	return stage::num[2];
 }
 void stage::set()
 {
@@ -58,7 +63,7 @@ void stage::set()
 }
 void stage::init()
 {
-	if (next > 1)vect = -1;
+	if (next > 2)vect = -1;
 	else vect = 1;
 }
 void stage::reset()
@@ -69,6 +74,7 @@ void stage::reset()
 	pos[1] = 1220;
 	pos[0] = 1220+640;
 }
+
 void stage::update()
 {
 	switch (state)
@@ -78,17 +84,18 @@ void stage::update()
 		state++;
 		break;
 	case 2:
-		pos[0] -= 80;
-		pos[1] -= 40;
-		pos[3] += 40;
-		pos[4] += 80;
-		
 		if (scl <= 0.5)
 		{
 			state++;
 		}
 		else
+		{
 		scl -= 0.05;
+		pos[0] -= 80;
+		pos[1] -= 40;
+		pos[3] += 40;
+		pos[4] += 80;
+		}
 		break;
 	case 3:
 		for (int i = 0; i < 5; i++)
@@ -100,24 +107,39 @@ void stage::update()
 		    num[2] = num[next];
 			set();
 			reset();
-			//if (LEFT) { stage::next = 1; stage::state = 1; }
-			//if (RIGHT){ stage::next = 3; stage::state = 1; }
+			timer = 0;
 		    state++;
 		}
 		break;
-	case 4:
-		pos[0] += 80;
-		pos[1] += 40;
-		pos[3] -= 40;
-		pos[4] -= 80;
+	case 4: 
+		if (TRG(0)&PAD_SELECT)
+		{
+			state++;
+		}
+		if(LEFT||RIGHT)
+		{
+			if (LEFT) { stage::next = 1; stage::state = 1; }
+		    if (RIGHT){ stage::next = 3; stage::state = 1; }
+		}
+		else if(timer>60)
+		state++;
+		timer++;
+		break;
+	case 5:
 		if (scl >= 1)
 		{
 			state++;
 		}
 		else
+		{
 		scl += 0.05;
+		pos[0] += 80;
+		pos[1] += 40;
+		pos[3] -= 40;
+		pos[4] -= 80;
+		}
 		break;
-	case 5:
+	case 6:
 		state = 0;
 		break;
 	}
@@ -142,7 +164,6 @@ void title_init()
 	stage::pos[4] = -1620;
     title_state = 0;
     title_timer = 0;
-
 }
 
 void title_update()
@@ -155,7 +176,7 @@ void title_update()
         title_state++;
         break;
     case 1:
-        if (TRG(0) & PAD_START)
+        if (TRG(0) & PAD_START&&stage::state==0)
         {
             fadeOut=0.0f;
             title_state++;
@@ -199,6 +220,7 @@ void title_draw()
 		}
 		break;
 	}
+#if(Debug)
 	for (int i = 0; i < 5; i++)
 	{
 		debug::setString("pos[%d]:%f", i, stage::pos[i]);
@@ -208,7 +230,9 @@ void title_draw()
 	debug::setString("num[2]:%d", stage::num[2]);
 	debug::setString("num[3]:%d", stage::num[3]);
 	debug::setString("num[4]:%d", stage::num[4]);
+	debug::setString("vect:%d", stage::vect);
 	debug::display();
+#endif
 }
 
 void title_end()

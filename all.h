@@ -15,6 +15,7 @@
 #include "rad.h"
 #include "player.h"
 #include "enemy.h"
+#include "volcano.h"
 
 
 #endif // !INCLUDED_ALL
